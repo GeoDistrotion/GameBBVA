@@ -1,12 +1,11 @@
 export default class InteractElement{
     
     constructor(live__Points, callback ){
-        let lP = live__Points;
-        showLivePoints();
+        this.lP = live__Points;
     }
 
     showLivePoints(){
-        console.log(lP);
+        console.log(this.lP);
     }
 
 }

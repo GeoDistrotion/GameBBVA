@@ -1,3 +1,2 @@
-import './main.scss';
-
-console.log('algo chido');
+import './index.scss';
+import MainLogo from './images/logo_bbva_blanco.svg';

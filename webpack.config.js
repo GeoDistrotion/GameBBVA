@@ -1,5 +1,6 @@
 const path = require('path')
-const HtmlWebpackPlugin =require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const SOURCE_DIR = path.join(__dirname, 'src');
 const DIST_DIR = path.join(__dirname, 'app');
@@ -9,15 +10,15 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname,'app'),
-        clean: true,
+        path: path.resolve(__dirname, 'app'),
+        clean: true
     },
     module: {
         rules: [
             {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader",
                 ],
@@ -25,10 +26,16 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'images/[hash][ext][query]'
+                }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[hash][ext][query]'
+                }
             },
             {
                 test: /\.(html)$/,
@@ -53,7 +60,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Development Game BBVA',
-        })
+            template: path.resolve(SOURCE_DIR, 'index.html'),
+            inject: 'body'
+        }),
+        new MiniCssExtractPlugin(),
     ],
     devtool: 'inline-source-map',
     devServer: {

@@ -1,18 +1,16 @@
 const path = require('path')
-const MiniCssExtrctactPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin =require('html-webpack-plugin');
 
-const SOURCE_DIR = path.join(__dirname, 'src/');
-const DIST_DIR = path.join(__dirname, 'app/');
+const SOURCE_DIR = path.join(__dirname, 'src');
+const DIST_DIR = path.join(__dirname, 'app');
 
 module.exports = {
     mode: 'development',
-    entry: [
-        `${SOURCE_DIR}/index.js`
-    ],
+    entry: './src/index.js',
     output: {
-        path: DIST_DIR,
-        publicPath: '/',
-        filename: 'index.js'
+        filename: 'index.js',
+        path: path.resolve(__dirname,'app'),
+        clean: true,
     },
     module: {
         rules: [
@@ -53,8 +51,11 @@ module.exports = {
         extensions: ['*', '.js', '.jsx']
     },
     plugins: [
-        new MiniCssExtrctactPlugin()
+        new HtmlWebpackPlugin({
+            title: 'Development Game BBVA',
+        })
     ],
+    devtool: 'inline-source-map',
     devServer: {
         contentBase: DIST_DIR,
         port: 3000,

@@ -1,3 +1,1 @@
-let a = "Jorge Sanchez Ruiz";
-
-console.log(a);
+import './main.scss';

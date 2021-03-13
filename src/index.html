@@ -9,6 +9,73 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./icon.png">
 </head>
 <body>
-    <div id="Root"></div>
+    <div id="BBVAMainContainer">
+        <header>
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 id="BBVAMainLogo">
+                        <img src="./images/logo_bbva_blanco.svg" alt="BBVA Main Logo">
+                    </h1>
+                </div>
+                <div class="col-md-6 txt-right">
+                    <p>Game powered by Geo</p>
+                    <p>V 0.0.1</p>
+                </div>
+            </div>
+        </header>
+        <section id="Root">
+            <div id="GameCont">
+                <!-- Start Init Section :: Geo -->
+                <div id="WelcomeBBVAGame" class="step-cont text-center">
+                    <h2>Zombie Task</h2>
+                    <br>
+                    <h3>Bienvenido</h3>
+                    <p>Tendrás que mantener el control de todos los <b>ZOMBIES TASK</b> que lleguén, cambiando su status a <b>entregado.</b></p>
+                    <br>
+                    <h3>Instrucciones</h3>
+                    <br>
+                    <p>1. Selecciona un jugador</p>
+                    <p>2. Podrás mover a tu jugador con con las teclas de<br/> 	←  y → </p>
+                    <p>3. Dispara con la barra espaciadora.</p>
+                    <br>
+                    <button class="btn__basic bnt__section" attr-section="1">Comenzar</button>
+                </div>
+                <!-- End Init Section :: Geo -->
+                <!-- Start Select Player :: Geo -->
+                <div id="UserDataBBVAGame" class="step-cont  text-center">
+                    <h2>Zombie Task</h2>
+                    <br>
+                    <h3>Selecciona un jugador</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn-player">
+                                <img src="./images/Player_Consultant.jpg" alt="BBVA Player Consultant">
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn-player">
+                                <img src="./images/Player_TechCreative.jpg" alt="BBVA Player Tech Creative">
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn-player">
+                                <img src="./images/Player_Manager.jpg" alt="BBVA Player Manager">
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <input class="form-control" type="text" id="Nickname" placeholder="Ingresa tu nickname">
+                    <br>
+                    <button class="btn__basic bnt__section" attr-section="2">Continuar</button>
+                </div>
+                <!-- End Select Player :: Geo -->
+                <!-- Start Start Game Canvas :: Geo -->
+                <div id="InitBBVAGame" class="step-cont"></div>
+                <!-- End Start Game Canvas :: Geo -->
+                <div id="AlertsContainer"></div>
+            </div>
+        </section>
+        <footer></footer>
+    </div>
 </body>
 </html>

@@ -28,4 +28,6 @@ Run the install all the packages necessaries to run the game
 https://github.com/GeoDistrotion/GameBBVA/
 
 ### Assets
+Main Background: [Zombie](https://cdn2.vectorstock.com/i/1000x1000/80/56/zombie-face-vector-2578056.jpg) form https://www.vectorstock.com
+
 Background: [Star](https://www.freepik.com/vectors/star) vector created by upklyak - www.freepik.com

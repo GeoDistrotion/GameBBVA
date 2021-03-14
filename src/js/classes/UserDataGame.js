@@ -5,10 +5,10 @@ export default class UserData {
         this.statusGame = false;
     }
 
-    setUserName(usr_name) {
+    setNickName(usr_name) {
         this.nickName = usr_name;
     }
-    getUserName() {
+    getNickName() {
         return this.nickName;
     }
 

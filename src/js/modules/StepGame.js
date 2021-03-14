@@ -1,4 +1,4 @@
-import AlertMessage from '../modules/Alertmessage';
+import AlertMessage from '../classes/Alertmessage';
 
 /**
  * 
@@ -54,18 +54,19 @@ function validateStep(w_usrdata, step){ // function to validate section
             alert.setMessage('Comienza el juego!');
             break;
         case 2: // Section require validation 2 validations, the nickname and the
-            const nickName = w_usrdata.getPlayer();
+            const nickName = w_usrdata.getNickName();
             const player = w_usrdata.getPlayer();
+            console.log(nickName, player);
             if(nickName && player)
                 valid = true;
-            else
+            else{
                 valid = false;
                 alert.setMessage('Debes seleccionar al menos un perfil e ingresar un nickname.');
+            }
             break;
         default:
             valid = false;
             break;
     }
-    console.log(step, `Es valido: ${valid}`);
     return valid;
 }

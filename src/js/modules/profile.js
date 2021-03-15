@@ -26,10 +26,10 @@ export function removeProfileEvents(){
     const btns_player       = document.getElementsByClassName('btn-player');    // get all the player buttons selector
     const nickname_input    = document.querySelector('#NicknameInput');         // get the nickname text input 
     nickname_input.value = "";
-    nickname_input.addEventListener('input', e => {})
+    nickname_input.removeEventListener('input', e => {}); // Remove Listeners from  the nickname input
     for (let btnplyr = 0; btnplyr < btns_player.length; btnplyr++) {
-        const current_btn = btns_player[btnplyr];
-        current_btn.removeEventListener('click', ()=>{});
+        const current_btn = btns_player[btnplyr];  
+        current_btn.removeEventListener('click', ()=>{});  // remove listeners from the player selector buttons
     }
 }
 
@@ -37,18 +37,18 @@ export function removeProfileEvents(){
  * 
  * @param {*} btn 
  */
-function choosePlayer(btn=null){
-    const btns_player = document.getElementsByClassName('btn-player');
+function choosePlayer(btn=null){ // UI interface behavior
+    const btns_player = document.getElementsByClassName('btn-player'); // get all the player buttons selector 
     for (let btnplyr = 0; btnplyr < btns_player.length; btnplyr++) {
         const current_btn = btns_player[btnplyr];
-        current_btn.classList.remove("selected");
+        current_btn.classList.remove("selected"); // Remove any selected class added
     }
     if( btn )
-        btn.classList.add("selected");
+        btn.classList.add("selected"); // if player selected by user add selected class
 }
 
 
-export function  clearProfile(w_userdata){
-    w_userdata.setNickName('');
-    w_userdata.setPlayer('');
+export function  clearProfile(w_userdata){ // Reset user profile
+    w_userdata.setNickName(''); // empty nickname user nickname
+    w_userdata.setPlayer(''); // empty player choose by the user
 }

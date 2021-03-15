@@ -206,8 +206,6 @@ function validateStep(w_usrdata, step) {
       valid = false;
       break;
   }
-
-  console.log(step, "Es valido: ".concat(valid));
   return valid;
 }
 

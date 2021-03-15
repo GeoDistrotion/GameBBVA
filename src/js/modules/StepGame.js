@@ -56,7 +56,6 @@ function validateStep(w_usrdata, step){ // function to validate section
         case 2: // Section require validation 2 validations, the nickname and the
             const nickName = w_usrdata.getNickName();
             const player = w_usrdata.getPlayer();
-            console.log(nickName, player);
             if(nickName && player)
                 valid = true;
             else{

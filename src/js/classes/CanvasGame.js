@@ -11,6 +11,9 @@ export default class CanvasGame{
         this.center;
         this.contWidth = 0;
         this.contHeight = 0;
+        this.zombies = [];
+        this.zDir = "right";
+        this.zombieloop;
     }
 
     startCanvasGame(){
@@ -31,7 +34,8 @@ export default class CanvasGame{
         this.hero = new Player(this.assets.hero_right, this.assets.hero_left, 50, this.context, 'Hero');
         this.hero.setPosX( this.center );
         this.hero.setPosY( this.floor - 140 );
-       
+
+        this._zombiesmanager();
         this._addHeroControls();
         this._turnOnEngine();
     }
@@ -64,12 +68,44 @@ export default class CanvasGame{
         })
     }
 
+    _zombiesmanager(){
+        this.zombieloop = setInterval(() => {
+            if(this.zombies.length < 2){
+                let newZombie = new Player(this.assets.zombie_right,this.assets.zombie_left, 10, this.context, "zombie", this.zDir);
+                newZombie.setPosY( this.floor - 140 );
+                newZombie.setPosX( (this.zDir === "right")? -50 : (this.contWidth + 50) );
+                this.zDir = (this.zDir === "right")? "left" : "right";
+                console.log(newZombie.getDirection(), 'Zombie direction');
+                this.zombies.push(newZombie);
+            }
+        }, 3000);
+    }
+
     _turnOnEngine(){
         this.context.clearRect(0,0,this.contWidth, this.contWidth);
         this.context.fillStyle = 'black';
         this.context.fillRect(0, this.floor, this.contWidth, 150);
         this.hero.draw();
-        console.log('Go Animation ...');
+        
+        this.zombies.forEach((zombie, z) => {
+            zombie.draw();
+            let zPosX = zombie.getPosX();
+            const cirrDir = zombie.getDirection();
+
+            if( cirrDir === "right" && zPosX < this.contWidth ){
+                zombie.setPosX(zPosX + 2);
+            }else if( cirrDir === "right" && zPosX >= this.contWidth){
+                this.zombies.splice(z, 1);
+            }
+            
+            if( zombie.getDirection() === "left" && zPosX > -100){
+                zombie.setPosX(zPosX - 2);
+            }else if( cirrDir === "left" && zPosX <= 0){
+                this.zombies.splice(z, 1);
+            }
+
+            zombie.startRun();
+        });
         this.animate = requestAnimationFrame( () => this._turnOnEngine() );
     }
     

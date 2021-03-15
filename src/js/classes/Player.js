@@ -8,7 +8,7 @@ export default class Player{
         this.assets_right = imgs_right;
         this.assets_left = imgs_left;
         this.run;
-        this.imageIndex = 0;
+        this.imageIndex = 15;
         this.direction = 'right';
     }
 
@@ -32,18 +32,18 @@ export default class Player{
 
     startRun(){
         if(this.imageIndex < 14){
-            this.imageIndex += 1;
+            this.imageIndex += 2;
         }else{
-            this.imageIndex = 1;
+            this.imageIndex = 0;
         }
     }
 
     stopRun(){
         clearInterval(this.run);
-        this.imageIndex = 0;
+        this.imageIndex = 15;
     }
 
     draw(x, y){
-        this.c.drawImage(((this.direction == 'right')?this.assets_right[this.imageIndex]:this.assets_left[this.imageIndex]), this.x, this.y, 170, 160);
+        this.c.drawImage(((this.direction == 'right')?this.assets_right[this.imageIndex]:this.assets_left[this.imageIndex]), this.x, this.y, 100, 160);
     }
 }

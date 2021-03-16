@@ -16,8 +16,10 @@ export function stepGameManager(currentView = 0, w_usrdata, callback){
                 sections[sect].style.display = "none"; // Hide Section
         }
     }
-    if(callback){
-        callback(currentView);
+    if(validateStep( w_usrdata, currentView )){
+        if(callback){
+            callback(currentView);
+        }
     }
 }
 

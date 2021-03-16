@@ -32,7 +32,8 @@ p{
 }
 
 .btn__basic{
-    font-family: BentonSansBBVA-Medium,Helvetica,Arial,sans-serif;
+    text-decoration: none;
+    font-family: BentonSansBBVA-Regular,Helvetica,Arial,sans-serif;
     font-size: 15px;
     color: #fff;
     text-align: center;
@@ -101,6 +102,10 @@ button{
     background-color: none;
     background: none;
     padding: 0;
+}
+.link{
+    color: white;
+    display: block;
 }
 
 #AlertsContainer{
@@ -244,5 +249,9 @@ button{
     footer{ // Styels for footer
         width: 100%;
         padding: 20px;
+        text-align: center;
+        p{
+            color: white;
+        }
     }
 }

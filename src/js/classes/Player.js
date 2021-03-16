@@ -42,6 +42,13 @@ export default class Player{
         return this.direction;
     }
 
+    setPointsOfLive(w_pol){
+        this.pointsOfLive = w_pol;
+    }
+    getPointsOfLive(){
+        return this.pointsOfLive;
+    }
+
     startRun(){
         if(this.imageIndex < this.maxImgs){ // displaying the movement images
             this.imageIndex += 1;

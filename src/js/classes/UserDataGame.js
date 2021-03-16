@@ -2,6 +2,7 @@ export default class UserData {
     constructor() {
         this.nickName = "";
         this.player = "";
+        this.score = 0;
         this.statusGame = false;
     }
 

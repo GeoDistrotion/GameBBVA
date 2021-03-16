@@ -51,7 +51,6 @@ function validateStep(w_usrdata, step){ // function to validate section
             break;
         case 1: // Section 1 not require validation
             valid = true;
-            alert.setMessage('Comienza el juego!');
             break;
         case 2: // Section require validation 2 validations, the nickname and the
             const nickName = w_usrdata.getNickName();

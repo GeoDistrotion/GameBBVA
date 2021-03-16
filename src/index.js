@@ -26,7 +26,7 @@ function initGame(){
                 initProfileEvents( userData ); // init the profile bottons event to select the new one
                 break;
             case 2:
-                canvasGame.startCanvasGame(); // start the canvas game
+                canvasGame.startCanvasGame(userData); // start the canvas game
                 break;
             case 3:
                 

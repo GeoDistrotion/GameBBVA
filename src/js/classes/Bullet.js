@@ -12,7 +12,7 @@ export default class Bullet{
         this.x = x;
     } 
 
-    gettPosX(x){
+    getPosX(x){
         return this.x;
     }
 

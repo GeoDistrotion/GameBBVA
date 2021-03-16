@@ -51,7 +51,7 @@ export default class CanvasGame{
         addEventListener('keydown', (e)=>{ // adding the window keyboard event
             const hPosX = this.hero.getPosX(); // get the hero current x pos
             const hDir = this.hero.getDirection(); // get the hero current direction
-            const bulletXOrigin = hDir=='right'? hPosX + 80: hPosX - 20;  // set the origin of the new bullet;
+            const bulletXOrigin = hDir=='right'? hPosX + 80: hPosX + 40;  // set the origin of the new bullet;
             switch (e.key) {
                 case "ArrowLeft": // catch the Arrow left
                     this.hero.setDirection('left'); // set the hero direction to left
@@ -99,7 +99,7 @@ export default class CanvasGame{
                 this.zDir = (this.zDir === "right")? "left" : "right"; // set the Zombie move direction
                 this.zombies.push(newZombie); // add the new zombie to the main zombies array
             }
-        }, 3000);
+        }, 1000);
     }
 
     _turnOnEngine(){
@@ -125,12 +125,21 @@ export default class CanvasGame{
                 this.zombies.splice(z, 1);// remove the object from the list
             }
 
+            /* Collition detector */
+            this.bullets.forEach((bullet, b) => {
+                const bulletPosX = bullet.getPosX();
+                if(bulletPosX > zPosX + 40 && bulletPosX < zPosX + 60){
+                    this.zombies.splice(z, 1);
+                    this.bullets.splice(b,1);
+                }
+            });
+
             zombie.startRun(); // start the animation depending on the zombie direction
         });
 
         this.bullets.forEach((bullet, b)=>{
             bullet.draw(); // draw the bullet object each iteration
-            const bPosX = bullet.gettPosX(); 
+            const bPosX = bullet.getPosX(); 
             const currentBulletDir = bullet.getDirection();
             if(currentBulletDir == 'right' && bPosX < this.contWidth ){
                 bullet.setPosX( bPosX + 3 );

@@ -1,14 +1,14 @@
 export default class Player{
     constructor( 
-        imgs_right, 
-        imgs_left,  
-        w_pointsoflife = 0, 
-        context, 
-        w_id,
-        w_dir = "right"
+        imgs_right, // get the array images preloaded for the right direction
+        imgs_left,  // get the array images preloaded for the left direction
+        w_pointsoflife = 0, // set the points of life
+        context, // pass the context to draw the new object to the canvas env
+        w_id, // set the id (not in use by the moment)
+        w_dir = "right" // set the origin direction
         ){
-        this.x = 0;
-        this.y = 0;
+        this.x = 0; // origin x pos
+        this.y = 0; // origin y pos
         this.pointsOfLive = w_pointsoflife;
         this.id = w_id;
         this.c = context;
@@ -16,9 +16,11 @@ export default class Player{
         this.assets_left = imgs_left;
         this.imageIndex = 0;
         this.direction = w_dir;
-        this.maxImgs = (this.direction)? (this.assets_right.length-1):(this.assets_left.length-1)
+        this.maxImgs = (this.direction)? (this.assets_right.length-1):(this.assets_left.length-1); // create a limit to loop
     }
+ 
 
+    /** Getters && Setters */
     setPosX(x){
         this.x = x;
     }
@@ -41,15 +43,15 @@ export default class Player{
     }
 
     startRun(){
-        if(this.imageIndex < this.maxImgs){
+        if(this.imageIndex < this.maxImgs){ // displaying the movement images
             this.imageIndex += 1;
         }else{
-            this.imageIndex = 1;
+            this.imageIndex = 1; // return to the first image
         }
     }
 
     stopRun(){
-        this.imageIndex = 0;
+        this.imageIndex = 0; // return to the first image
     }
 
     draw(x, y){

@@ -22,11 +22,11 @@ function initGame(){
         removeProfileEvents();
         switch (w_sect) {
             case 1:
-                clearProfile( userData );
-                initProfileEvents( userData );
+                clearProfile( userData ); // clear the current profile to add a new one
+                initProfileEvents( userData ); // init the profile bottons event to select the new one
                 break;
             case 2:
-                canvasGame.startCanvasGame();
+                canvasGame.startCanvasGame(); // start the canvas game
                 break;
             case 3:
                 

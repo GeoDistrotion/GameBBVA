@@ -7,13 +7,7 @@ export default class Bullet{
         this.c  = context;
     }
 
-    draw(){
-        this.c.beginPath();
-        this.c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        this.c.fillStyle = 'red';
-        this.c.fill();
-    }
-
+    /** Getters && Setters */
     setPosX(x){
         this.x = x;
     } 
@@ -24,5 +18,12 @@ export default class Bullet{
 
     getDirection(){
         return this.direction;
+    }
+
+    draw(){
+        this.c.beginPath();
+        this.c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        this.c.fillStyle = 'red';
+        this.c.fill();
     }
 }

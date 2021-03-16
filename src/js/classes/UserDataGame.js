@@ -3,8 +3,10 @@ export default class UserData {
         this.nickName = "";
         this.player = "";
         this.score = 0;
-        this.statusGame = false;
+        this.level = 0;
     }
+
+    /** Getters & Setters */
 
     setNickName(usr_name) {
         this.nickName = usr_name;
@@ -18,5 +20,19 @@ export default class UserData {
     }
     getPlayer() {
         return this.player;
+    }
+
+    setScore(score){
+        this.score = score;
+    }
+    getScore(score){
+        return this.score;
+    }
+    
+    setLevel(level){
+        this.level = level;
+    }
+    getLevel(){
+        return this.level;
     }
 }

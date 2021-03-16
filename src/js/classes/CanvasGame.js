@@ -3,7 +3,7 @@ import Bullet from './Bullet';
 import Player from './Player';
 
 export default class CanvasGame{
-    constructor( assets, userData ){
+    constructor( assets, callback ){
         this.gameCont = document.querySelector('#InitBBVAGame'); // Get the main container
         this.canvas = document.createElement('canvas'); // Init element canvas
         this.assets = assets;  // Get the game assets preloaded
@@ -27,7 +27,8 @@ export default class CanvasGame{
 
         this.bullets = []; // Array to store the bullets objects
         this.Alerts = new AlertMessage();
-        
+        this.callback = callback;
+        this.userData;
     }
     
     startCanvasGame(userData){ // Trigger the start game  && set the global conf
@@ -37,8 +38,9 @@ export default class CanvasGame{
         this.zombiesSpeed = 1; // Rest Params
         this.zDir = "right"; // Rest Params
 
-        this.nickName = userData.getNickName();
-        this.playerProfile = userData.getPlayer();
+        this.userData = userData;
+        this.nickName = this.userData.getNickName();
+        this.playerProfile = this.userData.getPlayer();
 
         this.context = this.canvas.getContext('2d'); // Init the cotext
         
@@ -225,7 +227,13 @@ export default class CanvasGame{
 
     _endGame(){
         this._stopCanvasGame();
+        this.userData.setScore(this.score);
+        this.userData.setLevel(this.level);
         this.Alerts.setMessage('Ups, no importa.¡Lo has echo muy bien!');
+        let triggerEndSection = setTimeout(() => {
+            clearTimeout(triggerEndSection);
+            this.callback(3);
+        }, 1000);
     }
     
     _stopCanvasGame(){

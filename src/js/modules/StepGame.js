@@ -16,7 +16,9 @@ export function stepGameManager(currentView = 0, w_usrdata, callback){
                 sections[sect].style.display = "none"; // Hide Section
         }
     }
-    callback(currentView);
+    if(callback){
+        callback(currentView);
+    }
 }
 
 /**
@@ -61,6 +63,9 @@ function validateStep(w_usrdata, step){ // function to validate section
                 valid = false;
                 alert.setMessage('Debes seleccionar al menos un perfil e ingresar un nickname.');
             }
+            break;
+        case 3: // Section 3 not require validation
+            valid = true;
             break;
         default:
             valid = false;

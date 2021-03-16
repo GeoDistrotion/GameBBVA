@@ -14,7 +14,7 @@ import CanvasGame from './js/classes/CanvasGame'
 function initGame(){
     let userData = new UserData();
     const gameAssets = getGameAssets();
-    const canvasGame = new CanvasGame( gameAssets );
+    const canvasGame = new CanvasGame( gameAssets, triggerSection );
     btnChoseSection(userData, triggerSection); // add Chose section Event to buttons
     stepGameManager(0, userData, triggerSection); // init the game with the first view
 
@@ -29,7 +29,13 @@ function initGame(){
                 canvasGame.startCanvasGame(userData); // start the canvas game
                 break;
             case 3:
-                
+                const resultNickname = document.querySelector('.result-nickname');
+                const resultLevel = document.querySelector('.result-level');
+                const resultScore = document.querySelector('.result-score');
+                resultNickname.innerHTML = this.userData.getNickName();
+                resultLevel.innerHTML = this.userData.getLevel();
+                resultScore.innerHTML = this.userData.getScore();
+                stepGameManager(3, userData, null); // End section and show the history list
                 break;
         }
     }
